@@ -58,7 +58,6 @@ module.exports = async function uploadAsyncController(req,res){
             res.send("something bed happen, ERROR!")
         }
         else{
-            // res.json({"No. of Rows Added": mails.length});
             res.redirect("http://localhost:8000/thankyou.html");
           }
       });
