@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <style>
+        input{
+            display: none;
+        }
+        button.btn{
+            display: none;
+        }
+        .container{
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            height: 30vh;
+            width: 1400px;
+            border:1px solid rgba(79, 79, 79, 0.177);
+            border-radius: 4px;   
+            margin-top: 30px; 
+        }
+        h1{
+            cursor: pointer;
+            margin-bottom: 2rem;
+        }
+        form{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form action="/api/upload" method="post" enctype="multipart/form-data">
+            <h1><img src="https://img.icons8.com/ios-filled/50/000000/circled-up-2.png"/></h1>
+            <input type='file' name="file"/>
+            <h5>Upload a .xlsx or .xls file here</h5>
+            <button type='submit' class="btn btn-success">Submit</button>
+        </form>
+    </div>
+    <script>
+        const h5=document.querySelector('h5');
+        const form=document.querySelector('form');
+        const input=document.querySelector('input');
+        const img=document.querySelector('img');
+        const button=document.querySelector('button');
+
+        input.addEventListener('change',(e)=>{
+            const ext = e.target.files[0].name.split(".");
+            if(ext[1]==="xlsx"||ext[1]==="xls"){
+                h5.innerText = e.target.files[0].name;
+                h5.style.color='black';
+                button.style.display = "block";
+            }
+            else{
+                h5.innerText = 'Oops! Invalid file format';
+                h5.style.color='red';
+            }
+        })
+
+        
+        img.addEventListener("click",()=>{
+            input.click();
+        })
+    </script>
+</body>
+</html>
