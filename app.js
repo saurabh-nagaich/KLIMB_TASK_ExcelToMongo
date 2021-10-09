@@ -2,7 +2,7 @@ const express = require("express");
 const multer = require("multer");
 const path = require('path');
 
-const uploadController = require("./controller/personController");
+const uploadAsyncController = require("./controller/personController");
 
 const app=express();
 const upload=multer();
@@ -14,6 +14,6 @@ app.get('/',(req,res)=>{
     res.sendFile(__dirname+"/index.html");
 });
 
-app.post('/api/upload',upload.single('file'),uploadController);
+app.post('/api/upload',upload.single('file'),uploadAsyncController);
 
 module.exports = app;
