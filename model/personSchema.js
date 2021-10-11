@@ -2,7 +2,10 @@ const mongoose = require('mongoose');
 
 const personSchema = new mongoose.Schema({
     "Name of the Candidate": String,
-    "Email": String,
+    "Email": {
+        type: String, 
+        // unique:true
+    },
     "Mobile No.": String,
     "Date of Birth": String,
     "Work Experience": String,
